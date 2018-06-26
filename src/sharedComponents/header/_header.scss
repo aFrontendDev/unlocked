@@ -1,0 +1,31 @@
+// header
+@import '../../_styles/_00-settings/_variables';
+
+.header {
+  width: 100%;
+  height: $headerHeight;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: solid 1px $gray-g;
+}
+
+.header__menu {}
+
+.logo {}
+
+.logo__svg {
+  width: 170px;
+
+  @media (min-width: 768px) {
+    width: 270px;
+  }
+}
+
+.header__userImg {
+  max-width: 100%;
+  max-height: 40px;
+  border-radius: 50%;
+  vertical-align: top;
+}

@@ -1,0 +1,30 @@
+// main nav
+@import '../../_styles/_00-settings/_variables';
+
+.mainNav {
+  position: fixed;
+  left: 0;
+  max-width: 500px;
+  background: $brand-white;
+  padding: 20px;
+  top: $headerHeight;
+  bottom: 0;
+  transform: translateX(-110%);
+  transition: transform 300ms ease-in-out;
+  z-index: 9;
+  border-right: solid 1px $gray-g;
+}
+
+.mainNavIn {
+  transform: none;
+}
+
+.mainNav__ul {
+  margin: 0;
+  padding: 0;
+}
+
+.mainNav__a {
+  display: block;
+  padding: 5px;
+}
