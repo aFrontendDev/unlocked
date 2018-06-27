@@ -4,7 +4,15 @@
   background-color: $brand-white;
   padding: 10px 5px;
   margin-bottom: 20px;
-  box-shadow: 1px 1px 1px 1px #ccc
+  box-shadow: 1px 1px 1px 1px #ccc;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 450ms, transform 500ms ease-in-out;
+
+  &.post--in {
+    transform: none;
+    opacity: 1;
+  }
 }
 
 .post__user {

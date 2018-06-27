@@ -5883,9 +5883,9 @@ react-router@^4.2.0:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
-"react-waypoint@https://github.com/brigade/react-waypoint.git":
+react-waypoint@^8.0.2:
   version "8.0.2"
-  resolved "https://github.com/brigade/react-waypoint.git#b06941c20643afb8a3d427f7c8d79b6ba137f2bb"
+  resolved "https://registry.yarnpkg.com/react-waypoint/-/react-waypoint-8.0.2.tgz#4780c9b79189104eaec4cc7968ac60a900e508b1"
   dependencies:
     consolidated-events "^1.1.0 || ^2.0.0"
     prop-types "^15.0.0"

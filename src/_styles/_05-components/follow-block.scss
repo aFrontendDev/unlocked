@@ -1,0 +1,28 @@
+// follow block
+
+.follow-block__img {
+  margin-bottom: 5px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 60px;
+  }
+}
+
+.follow-block__detail {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+
+.follow-block__name {
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 5px;
+}
+
+.follow-block__location {
+  font-size: 12px;
+  line-height: 14px;
+}

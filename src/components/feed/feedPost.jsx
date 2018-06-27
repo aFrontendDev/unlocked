@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
+import Waypoint from 'react-waypoint';
 
-import feedData from './feedMockData.js';
+import feedData from './_MockDataFeed';
 
 // import styles from './_feed.scss';
 
@@ -13,6 +14,7 @@ class FeedPost extends Component {
     super(props);
 
     this.state = {
+      animateIn: false
     }
 
     this.likedSvg = this.likedSvg.bind(this);
@@ -21,6 +23,7 @@ class FeedPost extends Component {
     this.handleVideoBtnClick = this.handleVideoBtnClick.bind(this);
     this.handleChatClick = this.handleChatClick.bind(this);
     this.handleThumbClick = this.handleThumbClick.bind(this);
+    this.onEnter = this.onEnter.bind(this);
   }
 
   likedSvg() {
@@ -57,14 +60,21 @@ class FeedPost extends Component {
     console.log('click thumb', data);
   }
 
+  onEnter() {
+    this.setState({
+      animateIn: true
+    })
+  }
+
   render() {
     const data = this.props.data;
     const hasLiked = false;
+    const animateInClass = this.state.animateIn ? 'post--in' : '';
 
     return (
 
-  
-        <article className="post">
+      <Waypoint onEnter={this.onEnter} bottomOffset="200px">
+        <article className={`post ${animateInClass}`}>
           <div className="post__user">
             <img src={data.user.img} alt="user image" className="post__user-img" />
             <div className="post__user-details">
@@ -159,7 +169,7 @@ class FeedPost extends Component {
           }
 
         </article>
-      
+      </Waypoint>
     );
   }
 }

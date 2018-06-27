@@ -1,0 +1,38 @@
+// list-block
+
+.list-block {
+  position: relative;
+  width: 100%;
+  background: $brand-white;
+  border: solid 1px $gray-c;
+  padding: 0 5px;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.list-block__title {
+
+}
+
+.list-block ul {
+ margin: 0;
+ padding: 0 10px;
+ list-style: none;
+}
+
+.list-block li {
+  display: block;
+  margin: 10px 0;
+}
+
+.list-block__link,
+.list-block__link:visited {
+  color: $brand-black;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

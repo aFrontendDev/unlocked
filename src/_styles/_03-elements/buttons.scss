@@ -33,7 +33,6 @@ button::-moz-focus-inner {
 	@include rem(margin-bottom, $vr);
 	@include rem(margin-right, $ggw);
 	@include rem(min-height, $btn-height);
-	@include rem(min-width, $btn-width);
 	@include rem(padding, 20px 15px);
 	text-align: right;
 	text-decoration: none;
@@ -82,50 +81,14 @@ button::-moz-focus-inner {
 
 // blue bg, white text
 .btn--style-a {
-	background-color: $primary-color-a;
-	border-color: $primary-color-a;
-	color: $brand-white;
-
-	&.disabled,
-	&[disabled],
-	fieldset[disabled] & {
-		opacity: 1;
-
-		box-shadow: none;
-		cursor: default;
-		pointer-events: none; // Future-proof disabling of clicks
-	}
-
-	&:focus {
-		outline: 1px dotted currentColor;
-	}
-}
-
-// white bg, blue border & text
-.btn--style-b {
 	background-color: $brand-white;
-	border-color: $primary-color-a;
-	color: $primary-color-a;
-
-	&.disabled,
-	&[disabled],
-	fieldset[disabled] & {
-		opacity: 1;
-		box-shadow: none;
-		cursor: default;
-		pointer-events: none; // Future-proof disabling of clicks
-	}
-
-	&:focus {
-		outline: 1px dotted currentColor;
-	}
-}
-
-// black bg, white text
-.btn--style-c {
-	background-color: $brand-black;
-	border-color: $brand-black;
-	color: $brand-white;
+	border-color: transparent;
+	position: relative;
+	font-size: 13px;
+	text-transform: lowercase;
+	color: $gray-d;
+	box-shadow: 0px 2px 7px -1px $gray-d;
+	transition: transform 300ms ease;
 
 	&.disabled,
 	&[disabled],
@@ -137,7 +100,31 @@ button::-moz-focus-inner {
 		pointer-events: none; // Future-proof disabling of clicks
 	}
 
-	&:focus {
-		outline: 1px dotted currentColor;
+	&:before,
+	&:after {
+		content: '';
+    display: block;
+    position: absolute;
+    top: -1px;
+	}
+
+	&:before {
+		border-bottom: 29px solid transparent;
+    border-top: 29px solid transparent;
+    border-right: 20px solid $brand-white;
+    left: -21px;
+	}
+
+	&:after {
+		border-bottom: 29px solid transparent;
+    border-top: 29px solid transparent;
+    border-left: 20px solid $brand-white;
+    right: -21px;
+	}
+
+	&:focus,
+	&:hover {
+		outline: none;
+		transform: translateY(1px)
 	}
 }

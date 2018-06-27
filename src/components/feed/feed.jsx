@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
-import feedData from './feedMockData.js';
+import feedData from './_MockDataFeed';
 
 import FeedPost from './feedPost';
+import FeedSidebar from './feedSidebar';
 
 // import styles from './_feed.scss';
 
@@ -16,11 +17,11 @@ class Feed extends Component {
 
   render() {
     const feed = feedData;
-    console.log(feed);
 
     return (
-      <div className="feed">
+      <Fragment>
 
+      <div className="feed">
       {
         feed.map((data, index) => {
 
@@ -29,8 +30,13 @@ class Feed extends Component {
           )
         })
       }
-
       </div>
+
+      <div className="feed-sidebar">
+        <FeedSidebar />
+      </div>
+
+      </Fragment>
     );
   }
 }
