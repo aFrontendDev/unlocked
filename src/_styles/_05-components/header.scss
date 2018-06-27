@@ -1,5 +1,4 @@
 // header
-@import '../../_styles/_00-settings/_variables';
 
 .header {
   width: 100%;
@@ -9,13 +8,14 @@
   justify-content: space-between;
   padding: 10px 20px;
   border-bottom: solid 1px $gray-g;
+  background-color: $brand-white;
 }
 
 .header__menu {}
 
-.logo {}
+.header__logo {}
 
-.logo__svg {
+.header__logo-img {
   width: 170px;
 
   @media (min-width: 768px) {
@@ -23,7 +23,7 @@
   }
 }
 
-.header__userImg {
+.header__user-img {
   max-width: 100%;
   max-height: 40px;
   border-radius: 50%;

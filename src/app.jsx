@@ -2,8 +2,8 @@ import React from 'react';
 // Routing
 import Routes from './routes.jsx';
 
-import Header from './sharedComponents/header/header';
-import MainNav from './sharedComponents/mainNav/mainNav';
+import Header from './components/header/header';
+import MainNav from './components/mainNav/mainNav';
 
 export default class App extends React.Component {
   constructor(props) {

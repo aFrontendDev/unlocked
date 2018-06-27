@@ -1,0 +1,128 @@
+
+.post {
+  width: 100%;
+  background-color: $brand-white;
+  padding: 10px 5px;
+  margin-bottom: 20px;
+  box-shadow: 1px 1px 1px 1px #ccc
+}
+
+.post__user {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.post__user-img {
+  max-width: 100%;
+  max-height: 40px;
+  border-radius: 50%;
+  vertical-align: top;
+}
+
+.post__user-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+
+  p {
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+  }
+}
+
+.post__thumbs {
+  display: flex;
+
+  .thumb {
+    position: relative;
+    margin-right: 5px;
+
+    img {
+      max-width: 100%;
+      max-height: 40px;
+      vertical-align: top;
+    }
+  }
+
+  .thumb__icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: 50%;
+      height: 50%;
+      fill: $brand-white;
+    }
+  }
+}
+
+.post__social {
+  display: flex;
+  padding-top: 5px;
+  margin-bottom: 10px;
+}
+
+.post__like {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+  
+  span {
+    font-size: 12px;
+  }
+
+  svg {
+    width: 28px;
+    height: 28px;
+    fill: $pink-a;
+  }
+}
+
+.post__chat {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4px;
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.post__title {
+  font-size: 16px;
+  line-height: 18px;
+  margin-bottom: 5px;
+}
+
+.post__copy {
+
+  p {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+.post__tags {
+
+}
+
+.post__tag-link {
+  display: inline-block;
+  margin-right: 10px;
+  text-decoration: none;
+  color: $brand-black;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

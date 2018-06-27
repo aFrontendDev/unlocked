@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-import * as menuActions from '../../actions/menuActions';;
-
-import styles from './_mainNav.scss';
+import * as menuActions from '../../actions/menuActions';
 
 
 class MainNav extends Component {
@@ -23,16 +21,16 @@ class MainNav extends Component {
   }
 
   render() {
-    const mainNavIn = this.props.menu ? styles.mainNavIn : '';
+    const mainNavIn = this.props.menu ? 'main-nav--in' : '';
 
     return (
-      <nav className={`${styles.mainNav}  ${mainNavIn}`}>
-        <ul className={styles.mainNav__ul}>
+      <nav className={`main-nav  ${mainNavIn}`}>
+        <ul className="main-nav__ul">
           <li>
-            <Link className={styles.mainNav__a} onClick={this.handleClick} to={"/"}>Home</Link>
+            <Link className="main-nav__link" onClick={this.handleClick} to={"/"}>Home</Link>
           </li>
           <li>
-            <Link className={styles.mainNav__a} onClick={this.handleClick} to={"/dynamic/123"}>Dynamic page test</Link>
+            <Link className="main-nav__link" onClick={this.handleClick} to={"/dynamic/123"}>Dynamic page test</Link>
           </li>
         </ul>
       </nav>

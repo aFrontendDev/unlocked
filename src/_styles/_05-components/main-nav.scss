@@ -1,7 +1,5 @@
 // main nav
-@import '../../_styles/_00-settings/_variables';
-
-.mainNav {
+.main-nav {
   position: fixed;
   left: 0;
   max-width: 500px;
@@ -15,16 +13,16 @@
   border-right: solid 1px $gray-g;
 }
 
-.mainNavIn {
+.main-nav--in {
   transform: none;
 }
 
-.mainNav__ul {
+.main-nav__ul {
   margin: 0;
   padding: 0;
 }
 
-.mainNav__a {
+.main-nav__link {
   display: block;
   padding: 5px;
 }
