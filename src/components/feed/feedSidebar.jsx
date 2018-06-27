@@ -32,21 +32,21 @@ class FeedSidebar extends Component {
     return (
       <Fragment>
         {/* Create cta */}
-        <aside className="cta cta--style-a">
+        <aside className="cta cta--style-a large-screen">
           <button className="btn btn--style-a cta__btn" onClick={this.handleCreateClick}>
             Create a Look!
           </button>
         </aside>
 
         {/* Ask cta */}
-        <aside className="cta cta--style-a">
+        <aside className="cta cta--style-a large-screen">
           <button className="btn btn--style-a cta__btn" onClick={this.handleAskClick}>
             Ask a question
           </button>
         </aside>
 
         {/* Follow */}
-        <aside className="promo-block promo-block--style-a">
+        <aside className="promo-block promo-block--style-a large-screen">
           <h3 className="promo-block__title">Follow</h3>
           <div className="promo-block__scroll">
             <div className="promo-block__inner">
@@ -75,7 +75,7 @@ class FeedSidebar extends Component {
         </aside>
 
         {/* Top products */}
-        <aside className="promo-block promo-block--style-a">
+        <aside className="promo-block promo-block--style-a large-screen">
           <h3 className="promo-block__title">Trending Products</h3>
           <div className="promo-block__scroll">
             <div className="promo-block__inner">

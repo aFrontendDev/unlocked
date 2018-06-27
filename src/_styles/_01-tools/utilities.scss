@@ -39,3 +39,9 @@
 	transition: none!important;
 }
 
+.large-screen {
+
+	@media (max-width: 767px) {
+		display: none;
+	}
+}
