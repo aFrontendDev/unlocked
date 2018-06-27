@@ -13,8 +13,13 @@ class FeedPost extends Component {
   constructor(props) {
     super(props);
 
+    const id = props.data.id;
+    const liked = window.localStorage.getItem(`trybe-liked-${id}`) ? true : false ;
+
     this.state = {
-      animateIn: false
+      animateIn: false,
+      liked,
+      videoPlaying: false
     }
 
     this.likedSvg = this.likedSvg.bind(this);
@@ -45,11 +50,36 @@ class FeedPost extends Component {
   }
 
   handleLikeBtn() {
-    console.log('click like');
+    const like = !this.state.liked;
+    this.setState({
+      liked: like
+    });
+
+    if (like) {
+      window.localStorage.setItem(`trybe-liked-${this.props.data.id}`, 'true');
+    } else {
+      window.localStorage.removeItem(`trybe-liked-${this.props.data.id}`);
+    }
   }
 
-  handleVideoBtnClick() {
-    console.log('click video');
+  handleVideoBtnClick(videoId) {
+    const targetId = videoId;
+    const _Target = document.querySelector(`#${targetId}`);
+    if (_Target) {
+      const isPaused = _Target.paused;
+      if (isPaused) {
+        _Target.muted = false;
+        _Target.play();
+        this.setState({
+          videoPlaying: true
+        })
+      } else {
+        _Target.pause();
+        this.setState({
+          videoPlaying: true
+        })
+      }
+    }
   }
 
   handleChatClick() {
@@ -68,8 +98,11 @@ class FeedPost extends Component {
 
   render() {
     const data = this.props.data;
-    const hasLiked = false;
+    const hasLiked = this.state.liked;
     const animateInClass = this.state.animateIn ? 'post--in' : '';
+    const likes = this.state.liked ? data.likes + 1 : data.likes;
+    const videoId = `video-id__${data.id}`;
+    const videoInClass = this.state.videoPlaying ? 'post__media--video-in' : '';
 
     return (
 
@@ -83,10 +116,10 @@ class FeedPost extends Component {
             </div>
           </div>
 
-          <div className="post__media">
+          <div className={`post__media ${videoInClass}`}>
             {
               data.mainMedia.video 
-              ? <video src={data.mainMedia.video.src} poster={data.mainMedia.video.poster} playsinline muted />
+              ? <video id={videoId} src={data.mainMedia.video.src} poster={data.mainMedia.video.poster} playsInline muted />
               : <picture>
                   <source srcSet={data.mainMedia.image.large.src} media="(min-width: 768px)" />
                   <img srcSet={data.mainMedia.image.small.src} src={data.mainMedia.image.large.src} />
@@ -95,7 +128,7 @@ class FeedPost extends Component {
 
             {
               data.mainMedia.video 
-              ? <button className="btn--unstyled post__video-btn" onClick={this.handleVideoBtnClick}>
+              ? <button className="btn--unstyled post__video-btn" onClick={() => {this.handleVideoBtnClick(videoId)}}>
                   <span className="post__video-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 17v-10l9 5.146-9 4.854z"/></svg>
                   </span>
@@ -137,7 +170,7 @@ class FeedPost extends Component {
                 : this.notLikedSvg()
               }
 
-              <span>{data.likes}</span>
+              <span>{likes}</span>
             </button>
 
             <button className="btn--unstyled post__chat" onClick={this.handleChatClick}>

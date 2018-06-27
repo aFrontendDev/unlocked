@@ -40,6 +40,47 @@
   }
 }
 
+.post__media {
+  position: relative;
+  margin-bottom: 5px;
+
+  video {
+    width: 100%;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    vertical-align: top;
+  }
+}
+
+.post__video-btn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .post__media--video-in & {
+    opacity: 0;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  svg {
+    fill: $brand-white;
+    width: 40px;
+    height: 40px;
+  }
+}
+
 .post__thumbs {
   display: flex;
 
