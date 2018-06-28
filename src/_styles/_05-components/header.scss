@@ -13,13 +13,21 @@
 
 .header__menu {}
 
-.header__logo {}
+.header__logo {
+
+}
+
+.header__logo-title {
+  display: flex;
+  align-items: center;
+}
 
 .header__logo-img {
-  width: 170px;
+  vertical-align: top;
+  width: 100px;
 
   @media (min-width: 768px) {
-    width: 270px;
+    width: 130px;
   }
 }
 

@@ -18,4 +18,11 @@
       clip-path: url(#hexClipPath);
     }
   }
+
+  &.svg-mask--bb {
+
+    .svg-mask-img {
+      clip-path: url(#bbClipPath);
+    }
+  }
 }

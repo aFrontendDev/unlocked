@@ -6,7 +6,32 @@ import Waypoint from 'react-waypoint';
 import feedData from './_MockDataFeed';
 
 // import styles from './_feed.scss';
-
+import img1 from "../../_assets/images/jeff_1.jpg";
+import img3 from "../../_assets/images/prod_3.jpg";
+import img5 from "../../_assets/images/prod_5.jpg";
+const lookProdData = {
+  1: {
+    name: "Jeffree Star Cosmetics",
+    desc: "Blood Sugar Eyeshadow Palette",
+    price: "£46.00",
+    img: img1,
+    href: "https://www.beautybay.com/makeup/jeffreestarcosmetics/bloodsugareyeshadowpalette/"
+  },
+  2: {
+    name: "Juvia's Place",
+    desc: "7 Piece Purple Brush Set",
+    price: "£35.00",
+    img: img3,
+    href: "https://www.beautybay.com/makeupbrushes/juviasplace/7piecepurplebrushset/"
+  },
+  3: {
+    name: "Mario Badescu",
+    desc: "Facial Spray With Aloe Herbs And Rosewater",
+    price: "£7.00",
+    img: img5,
+    href: "https://www.beautybay.com/skincare/mariobadescu/facialspraywithaloeherbsandrosewater/"
+  }
+}
 
 class FeedPost extends Component {
 
@@ -19,7 +44,14 @@ class FeedPost extends Component {
     this.state = {
       animateIn: false,
       liked,
-      videoPlaying: false
+      videoPlaying: false,
+      shopLookIn: false,
+      lookProdHref: '',
+      lookProdImg: '',
+      lookProdName: '',
+      lookProdDesc: '',
+      lookProdPrice: '',
+      lookProdIn: false
     }
 
     this.likedSvg = this.likedSvg.bind(this);
@@ -29,6 +61,9 @@ class FeedPost extends Component {
     this.handleChatClick = this.handleChatClick.bind(this);
     this.handleThumbClick = this.handleThumbClick.bind(this);
     this.onEnter = this.onEnter.bind(this);
+    this.handleShopLookClick = this.handleShopLookClick.bind(this);
+    this.handleSpotClick = this.handleSpotClick.bind(this);
+    this.handleProdClose = this.handleProdClose.bind(this);
   }
 
   likedSvg() {
@@ -90,6 +125,33 @@ class FeedPost extends Component {
     console.log('click thumb', data);
   }
 
+  handleShopLookClick() {
+    const shopLookIn = !this.state.shopLookIn;
+    this.setState({
+      shopLookIn 
+    })
+  }
+
+  handleSpotClick(id) {
+    console.log('click spot');
+    console.log('prod', lookProdData[id]);
+    const prod = lookProdData[id];
+    this.setState({
+      lookProdHref: prod.href,
+      lookProdImg: prod.img,
+      lookProdName: prod.name,
+      lookProdDesc: prod.desc,
+      lookProdPrice: prod.price,
+      lookProdIn: true
+    })
+  }
+
+  handleProdClose() {
+    this.setState({
+      lookProdIn: false
+    })
+  }
+
   onEnter() {
     this.setState({
       animateIn: true
@@ -103,6 +165,8 @@ class FeedPost extends Component {
     const likes = this.state.liked ? data.likes + 1 : data.likes;
     const videoId = `video-id__${data.id}`;
     const videoInClass = this.state.videoPlaying ? 'post__media--video-in' : '';
+    const shopLookInClass = this.state.shopLookIn ? 'post-media--shop-look-in' : '';
+    const lookProdInClass = this.state.lookProdIn ? 'look-product--in' : '';
 
     return (
 
@@ -126,7 +190,7 @@ class FeedPost extends Component {
             </div>
           </div>
 
-          <div className={`post__media ${videoInClass}`}>
+          <div className={`post__media ${videoInClass} ${shopLookInClass}`}>
             {
               data.mainMedia.video 
               ? <video id={videoId} src={data.mainMedia.video.src} poster={data.mainMedia.video.poster} playsInline muted />
@@ -145,41 +209,79 @@ class FeedPost extends Component {
                 </button>
               : null
             }
+
+            <div className="post-media__shop-look">
+              <button onClick={() => {this.handleSpotClick(1)}} className="btn--unstyled shop-look-spot shop-look-spot--1"><span></span></button>
+
+              <button onClick={() => {this.handleSpotClick(2)}} className="btn--unstyled shop-look-spot shop-look-spot--2"><span></span></button>
+
+              <button onClick={() => {this.handleSpotClick(3)}} className="btn--unstyled shop-look-spot shop-look-spot--3"><span></span></button>
+
+              <div className={`look-product ${lookProdInClass}`}>
+                <button className="btn--unstyled look-product__close" onClick={this.handleProdClose}>
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm0 10.293l5.293-5.293.707.707-5.293 5.293 5.293 5.293-.707.707-5.293-5.293-5.293 5.293-.707-.707 5.293-5.293-5.293-5.293.707-.707 5.293 5.293z"/></svg>
+                </button>
+
+                <div className="look-product__inner">
+                  <a href={this.state.lookProdHref} className="look-product__link" target="_blank">
+                    <div className="look-product__img">
+                      <img src={this.state.lookProdImg} alt={this.state.lookProdName} />
+                    </div>
+                    <div className="look-product__detail">
+                      <h3 className="look-product__name">{this.state.lookProdName}</h3>
+                      <p className="look-product__desc">{this.state.lookProdDesc}</p>
+                      <p className="look-product__price">{this.state.lookProdPrice}</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+            </div>
           </div>
 
-          {
-            data.thumbs && data.thumbs.length ?
-              <div className="post__thumbs">
-                {
-                  data.thumbs.map((thumb, index) => {
+          <div className="post__image-actions">
+            {
+              data.thumbs && data.thumbs.length ?
+                <div className="post__thumbs">
+                  {
+                    data.thumbs.map((thumb, index) => {
 
-                    return(
-                      <button key={`post-thumb__${index}`} className="btn--unstyled thumb" onClick={() => {this.handleThumbClick(thumb)} }>
-                        {/* <img src={thumb.src} alt="thumb image" /> */}
-                        <div className="svg-mask svg-mask--hex">
-                          <svg viewBox="0 0 24 24">
-                            <defs>
-                              <clipPath id="hexClipPath">
-                                <path d="M18 2l6 10.5-6 10.5h-12l-6-10.5 6-10.5z"/>
-                              </clipPath>
-                            </defs>
-                            <image xlinkHref={thumb.src} x="0" y="0" className="svg-mask-img"/>
-                          </svg>
-                        </div>
-                        {
-                          thumb.video ? 
-                            <span className="thumb__icon">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 17v-10l9 5.146-9 4.854z"/></svg>
-                            </span>
-                          : null
-                        }
-                      </button>
-                    )
-                  })
-                }
-              </div>
-            : null
-          }
+                      return(
+                        <button key={`post-thumb__${index}`} className="btn--unstyled thumb" onClick={() => {this.handleThumbClick(thumb)} }>
+                          {/* <img src={thumb.src} alt="thumb image" /> */}
+                          <div className="svg-mask svg-mask--hex">
+                            <svg viewBox="0 0 24 24">
+                              <defs>
+                                <clipPath id="hexClipPath">
+                                  <path d="M18 2l6 10.5-6 10.5h-12l-6-10.5 6-10.5z"/>
+                                </clipPath>
+                              </defs>
+                              <image xlinkHref={thumb.src} x="0" y="0" className="svg-mask-img"/>
+                            </svg>
+                          </div>
+                          {
+                            thumb.video ? 
+                              <span className="thumb__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 17v-10l9 5.146-9 4.854z"/></svg>
+                              </span>
+                            : null
+                          }
+                        </button>
+                      )
+                    })
+                  }
+                </div>
+              : null
+            }
+
+            <div className="shop-look">
+              <button className="btn--unstyled shop-look__btn" onClick={this.handleShopLookClick}>
+                <span className="shop-look__text">Shop the look!</span>
+                <span className="shop-look__circle"></span>
+              </button>
+            </div>
+
+          </div>
           
 
           <div className="post__social">
