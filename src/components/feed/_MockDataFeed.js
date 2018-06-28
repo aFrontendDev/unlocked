@@ -7,59 +7,11 @@ import video1Still from "../../_assets/images/ashleigh_mov_clip_1.jpg";
 import ash1 from "../../_assets/images/ashleigh_1_comp.jpg";
 import ash2 from "../../_assets/images/ashleigh_2_comp.jpg";
 
+import model1 from "../../_assets/images/model_2.jpg";
+import modelThumb1 from "../../_assets/images/model_2-thumb_1.jpg";
+import modelThumb2 from "../../_assets/images/model_2-thumb_2.jpg";
+
 const feedData = [
-  {
-    id: '1',
-    user: {
-      name: "Camila2",
-      img: camila2,
-      location: "London"
-    },
-    mainMedia: {
-      image: {
-        large: {
-          src: mainImgA
-        },
-        small: {
-          src: mainImgA
-        }
-      }
-    },
-    thumbs: [
-      {
-        src: videoImgA,
-        video: "dLI0lW6Of9k",
-        poster: videoPosterA
-      },
-      {
-        src: "https://placehold.it/100x100",
-        video: null,
-        poster: "https://placehold.it/850x450"
-      },
-      {
-        src: "https://placehold.it/100x100",
-        video: null,
-        poster: "https://placehold.it/850x450"
-      }
-    ],
-    likes: 264,
-    title: "SMOKEY ROSE MAKEUP",
-    desc: "Today's video is with a super feminine rosy smokey eye tutorial. This look works for several occasions, but definitely for night events. It's pink, it's soft, it's romantic - absolutely one of my favorite go-to looks. I really hope you like it!",
-    tags: [
-      {
-        id: "eyeShadow",
-        name: "eyeShadow"
-      },
-      {
-        id: "makeup",
-        name: "makeup"
-      },
-      {
-        id: "beauty",
-        name: "beauty"
-      }
-    ]
-  },
   {
     id: '2',
     user: {
@@ -88,6 +40,49 @@ const feedData = [
       {
         id: "eyeShadow",
         name: "eyeShadow"
+      },
+      {
+        id: "makeup",
+        name: "makeup"
+      },
+      {
+        id: "beauty",
+        name: "beauty"
+      }
+    ]
+  },
+  {
+    id: '1',
+    user: {
+      name: "Emma",
+      img: modelThumb2,
+      location: "Manchester"
+    },
+    mainMedia: {
+      image: {
+        large: {
+          src: model1
+        },
+        small: {
+          src: model1
+        }
+      }
+    },
+    thumbs: [
+      {
+        src: modelThumb1
+      },
+      {
+        src: modelThumb2
+      }
+    ],
+    likes: 198,
+    title: "Lorem Ipsum",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id ligula risus. Sed maximus purus quis turpis semper, eget accumsan nisi ultrices. Aenean porta urna lorem, vel interdum magna sodales in.",
+    tags: [
+      {
+        id: "lipstick",
+        name: "lipstick"
       },
       {
         id: "makeup",
