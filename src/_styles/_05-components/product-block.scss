@@ -33,6 +33,7 @@
 }
 
 .product-block__actions {
+  position: relative;
   display: flex;
   justify-content: space-around;
 }
@@ -53,5 +54,28 @@
     svg {
       transform: scale(1.1);
     }
+  }
+}
+
+
+.added {
+  position: absolute;
+  background: rgba(255,255,255,0.9);
+  padding: 10px;
+  bottom: 0;
+  border-radius: 20px;
+  transform: translateY(100%);
+  opacity: 0;
+  
+  transition: all 300ms ease-in-out;
+
+  &.added--in {
+    transform: none;
+    opacity: 1;
+  }
+
+  &.added--out {
+    transform: translateY(-100%);
+    opacity: 0;
   }
 }
