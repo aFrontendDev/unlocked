@@ -133,8 +133,6 @@ class FeedPost extends Component {
   }
 
   handleSpotClick(id) {
-    console.log('click spot');
-    console.log('prod', lookProdData[id]);
     const prod = lookProdData[id];
     this.setState({
       lookProdHref: prod.href,
@@ -172,6 +170,7 @@ class FeedPost extends Component {
 
       <Waypoint onEnter={this.onEnter} bottomOffset="200px">
         <article className={`post ${animateInClass}`}>
+          <Link className="post__user-details-link" to={`/profile`}>
           <div className="post__user">
             <div className="svg-mask svg-mask--hex">
                 {/* <img src={data.user.img} alt="user image" className="post__user-img" /> */}
@@ -189,6 +188,7 @@ class FeedPost extends Component {
               <p>{data.user.location}</p>
             </div>
           </div>
+          </Link>
 
           <div className={`post__media ${videoInClass} ${shopLookInClass}`}>
             {
