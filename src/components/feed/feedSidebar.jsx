@@ -56,7 +56,17 @@ class FeedSidebar extends Component {
                 return (
                   <Link key={`follow__${index}`} className="promo-block__thumb follow-block" to={`/user/:${item.id}`}>
                     <div className="follow-block__img">
-                      <img src={item.img} alt="user image" />
+                      {/* <img src={item.img} alt="user image" /> */}
+                      <div className="svg-mask svg-mask--hex">
+                        <svg viewBox="0 0 24 24">
+                          <defs>
+                            <clipPath id="hexClipPath">
+                              <path d="M18 2l6 10.5-6 10.5h-12l-6-10.5 6-10.5z"/>
+                            </clipPath>
+                          </defs>
+                          <image xlinkHref={item.img} x="0" y="0" className="svg-mask-img"/>
+                        </svg>
+                    </div>
                     </div>
                     <div className="follow-block__detail">
                       <span className="follow-block__name">

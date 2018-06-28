@@ -39,7 +39,18 @@ class Header extends Component {
 
         <div className="header__actions">
           <button className={`btn--unstyled header__action header__user`}>
-            <img className="header__user-img" src={userprofileImg} alt="user image" />
+            {/* <img className="header__user-img" src={userprofileImg} alt="user image" /> */}
+            <div className="svg-mask svg-mask--hex">
+                {/* <img src={data.user.img} alt="user image" className="post__user-img" /> */}
+                <svg viewBox="0 0 24 24">
+                  <defs>
+                    <clipPath id="hexClipPath">
+                      <path d="M18 2l6 10.5-6 10.5h-12l-6-10.5 6-10.5z"/>
+                    </clipPath>
+                  </defs>
+                  <image xlinkHref={userprofileImg} x="0" y="0" className="svg-mask-img"/>
+                </svg>
+            </div>
           </button>
         </div>
       </header>

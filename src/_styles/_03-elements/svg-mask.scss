@@ -1,0 +1,21 @@
+// svg mask
+
+.svg-mask {
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .svg-mask-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &.svg-mask--hex {
+
+    .svg-mask-img {
+      clip-path: url(#hexClipPath);
+    }
+  }
+}

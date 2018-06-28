@@ -109,7 +109,17 @@ class FeedPost extends Component {
       <Waypoint onEnter={this.onEnter} bottomOffset="200px">
         <article className={`post ${animateInClass}`}>
           <div className="post__user">
-            <img src={data.user.img} alt="user image" className="post__user-img" />
+            <div className="svg-mask svg-mask--hex">
+                {/* <img src={data.user.img} alt="user image" className="post__user-img" /> */}
+                <svg viewBox="0 0 24 24">
+                  <defs>
+                    <clipPath id="hexClipPath">
+                      <path d="M18 2l6 10.5-6 10.5h-12l-6-10.5 6-10.5z"/>
+                    </clipPath>
+                  </defs>
+                  <image xlinkHref={data.user.img} x="0" y="0" className="svg-mask-img"/>
+                </svg>
+            </div>
             <div className="post__user-details">
               <p>{data.user.name}</p>
               <p>{data.user.location}</p>
@@ -145,7 +155,17 @@ class FeedPost extends Component {
 
                     return(
                       <button key={`post-thumb__${index}`} className="btn--unstyled thumb" onClick={() => {this.handleThumbClick(thumb)} }>
-                        <img src={thumb.src} alt="thumb image" />
+                        {/* <img src={thumb.src} alt="thumb image" /> */}
+                        <div className="svg-mask svg-mask--hex">
+                          <svg viewBox="0 0 24 24">
+                            <defs>
+                              <clipPath id="hexClipPath">
+                                <path d="M18 2l6 10.5-6 10.5h-12l-6-10.5 6-10.5z"/>
+                              </clipPath>
+                            </defs>
+                            <image xlinkHref={thumb.src} x="0" y="0" className="svg-mask-img"/>
+                          </svg>
+                        </div>
                         {
                           thumb.video ? 
                             <span className="thumb__icon">
