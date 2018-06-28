@@ -31,3 +31,27 @@
   font-size: 12px;
   line-height: 14px;
 }
+
+.product-block__actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.product-block__link {
+  display: flex;
+  align-items: center;
+  
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: $brand-black;
+    transition: transform 300ms ease-in-out;
+  }
+
+  &:hover {
+
+    svg {
+      transform: scale(1.1);
+    }
+  }
+}

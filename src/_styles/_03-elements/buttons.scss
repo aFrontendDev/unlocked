@@ -89,6 +89,7 @@ button::-moz-focus-inner {
 	color: $gray-d;
 	box-shadow: 0px 2px 7px -1px $gray-d;
 	transition: transform 300ms ease;
+	margin-right: 0;
 
 	&.disabled,
 	&[disabled],
@@ -126,5 +127,24 @@ button::-moz-focus-inner {
 	&:hover {
 		outline: none;
 		transform: translateY(1px)
+	}
+}
+
+.btn--style-b {
+	background-color: $bb-purple;
+	border-color: $bb-purple;
+	font-size: 14px;
+	text-transform: uppercase;
+	color: $brand-black;
+	transition: background-color 300ms ease;
+	min-height: 0;
+	padding: 10px 15px;
+
+	&:hover {
+		background-color: darken($bb-purple, 10%);
+	}
+
+	&.btn--small {
+		font-size: 10px;
 	}
 }
