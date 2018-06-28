@@ -1,6 +1,6 @@
 import React from 'react';
 
-import profile from "../../_assets/images/profile-new.jpg";
+import profile from "../../_assets/images/profile-USETHIS.jpg";
 
 class Profile extends React.Component {
 
