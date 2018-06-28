@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 
+import * as overlayActions from '../../actions/overlayActions';
+
 import trendingData from './_MockDataTrending';
 import productsData from './_MockDataProducts';
 import followData from './_MockDataFollow';
@@ -18,6 +20,7 @@ class FeedSidebar extends Component {
 
   handleCreateClick() {
     console.log('create click');
+    this.props.openOverlay();
   }
 
   handleAskClick() {
@@ -171,6 +174,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
+  openOverlay: overlayActions.overlayOpenAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeedSidebar);
